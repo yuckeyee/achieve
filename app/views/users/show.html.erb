@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+  <p id="notice"><%= notice %></p>
+    <div class="blog-text">
+      <p class="left"><strong>ユーザ名</strong></p>
+      <p class="left"><%= @user.name %></p>
+      <p class="left"><strong>メールアドレス</strong></p>
+      <p class="left"><%= @user.email %></p>
+    </div>
+    <div class="stats">
+        <%= link_to "フォロー", following_user_path(@user.id), class:"btn btn-default btn-sm", role:"button", remote: true %>
+        <%= link_to "フォロワー", followers_user_path(@user), class:"btn btn-default btn-sm", role:"button", remote: true %>
+    </div>
+    <div id="follow_area">
+      <%= render partial: 'users/follow', locals: { users: @users } %>
+    </div>
+  </div>
+</div>

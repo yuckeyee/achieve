@@ -1,0 +1,10 @@
+<% unless @users.blank? %>
+    <% @users.each do |user| %>
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <%= profile_img(user) %></p>
+        </div>
+        <p><%= user.email %></p>
+    </div>
+    <% end %>
+<% end %>
