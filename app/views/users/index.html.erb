@@ -9,7 +9,9 @@
         <a href="<%= user_path(user.id) %>">
           <%= user.email %>
         </a>
-        <%= render 'follow_form', user: user %>
+        <% unless current_user.id == user.id %>
+          <%= render 'follow_form', user: user %>
+        <% end %>
   </div>   
   <% end %>
 </div>
