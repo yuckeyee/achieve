@@ -3,15 +3,13 @@
   <h2>ユーザー</h2>
   <% @users.each do |user| %>
   <div class="row">
-      <div class="col-md-3 col-sm-6">    
-        <%= profile_img(user) %>
-      </div>
-        <a href="<%= user_path(user.id) %>">
-          <%= user.email %>
-        </a>
-        <% unless current_user.id == user.id %>
-          <%= render 'follow_form', user: user %>
-        <% end %>
+      <% if user.id != current_user.id %>
+        <div class="item">
+          <%= link_to user.name, user %>
+          <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+        </div>
+        <%= render partial: 'follow_form', locals: { user: user } if signed_in?   %>
+      <% end %>
   </div>   
   <% end %>
 </div>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :blogs, only: [:index, :new, :create, :edit, :update ,:destroy, :show] do
     resources :comments
@@ -31,5 +32,9 @@ resources :users, only: [:index, :show] do
 end
 
 resources :relationships, only: [:create, :destroy]
+
+resources :conversations do
+  resources :messages
+end
 
 end
