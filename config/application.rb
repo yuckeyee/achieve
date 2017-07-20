@@ -35,5 +35,12 @@ module Achieve
         request_specs: false
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
+    
+    # Improved the method on application.rb not to generate helper or assets with rails generate controller
+    config.generators do |g|
+      g.assets     false
+      g.helper     false
+    end
+
   end
 end
